@@ -32,29 +32,17 @@ er-gemma-vision/
 ```
 See `docs/architecture.md` for full details.
 
----
+## Core Features
+1. **Fully Offline AI Inference**: Operates 100% locally via Ollama with the Gemma 4 model, ensuring zero cloud dependency and strict patient data privacy.
+2. **Multimodal Medical Imaging**: Native support for processing both Chest X-Rays and Brain CT Scans using Gemma 4's multimodal vision capabilities.
+3. **Agentic RAG for Clinical Precision**: A local FAISS Vector Database automatically retrieves physical emergency protocols (WHO Trauma Guidelines, CTAS, qSOFA) to ground the LLM's diagnostic reasoning.
+4. **Offline Voice Dictation**: Clinicians can rapidly input symptoms hands-free using local audio transcription.
+5. **Real-time Multilingual Support**: Instantly streams translation for non-English speaking patients directly on the frontend.
+6. **AI Safety Review Loop**: A secondary autonomous "LLM-as-a-Judge" agent audits the generated triage urgency levels to prevent hallucinations and under-triage of critical conditions.
 
-## 🛠️ Implementation Checklist
-- [x] Scaffold repository structure
-- [x] Set up Python FastAPI backend with endpoints
-- [x] Create React + Tailwind frontend UI flows
-- [x] Scaffold Android-lite proof of concept
-- [ ] Connect Frontend to Backend API
-- [ ] Integrate real Gemma 4 inference (Ollama or API)
-- [ ] Implement local Vector DB ingestion (`scripts/ingest_docs.py`)
-- [ ] Connect Web Speech API for voice intake
-- [ ] Wire up real Translation prompts
-
-## 🏗️ What to Build First (Order)
-1. **End-to-End Mocked Flow**: Start the UI and Backend with mock data to ensure UX feels correct (Completed).
-2. **Gemma 4 Triage Point**: Connect the `/triage` endpoint to Gemma 4 via absolute rigid JSON schema.
-3. **Retrieval**: Run `ingest_docs.py` to populate FAISS/Qdrant and feed matched text into the Triage system prompt.
-4. **Voice & X-ray**: Integrate frontend dictation, follow up with X-Ray multimodal vision.
-5. **Guardrails**: Add safety validation to review Gemma output before returning to user.
-
-## 🤖 Where to Plug in AI Models
-1. **Gemma 4 Triage**: `apps/web/backend/services/triage_orchestrator.py`  (Replace mock response with LLM call).
-2. **Gemma 4 Translation**: `apps/web/backend/api/routes/translate.py` (Replace mock translation with LLM call).
-3. **X-Ray Vision Model**: `apps/web/backend/services/xray_service.py` (Create and plug a VLM or classifier here).
-4. **Voice Transcription**: `apps/web/frontend/src/App.jsx` (Use Web Speech API) OR `apps/web/backend/api/routes/intake.py` (Use an STT model like Whisper if doing backend).
-5. **Safety Guardrail**: `apps/web/backend/services/triage_orchestrator.py` (Chain an LLM verification step before returning result).
+## Project Documentation
+Detailed documentation for the hackathon judges can be found in the `docs/` folder:
+- `kaggle_writeup.md`: Our official project submission and technical architecture overview.
+- `video_script.md`: The script used for our 3-minute demo presentation.
+- `google_ecosystem_scaleup.md`: Our roadmap for scaling to Google Cloud Platform and LiteRT.
+- `COMPETITION_COMPLIANCE.md`: How we aligned with the Hackathon's Safety and Trust tracks.
