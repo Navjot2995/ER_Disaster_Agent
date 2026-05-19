@@ -1,0 +1,35 @@
+[
+    {
+        "id": "case_1",
+        "age": 61,
+        "sex": "Male",
+        "symptoms": "fever, cough, shortness of breath",
+        "duration": "3 days",
+        "medical_history": "Hypertension",
+        "vitals": {"temperature": 39.0, "spo2": 89, "heart_rate": 110},
+        "xray": "possible lower lobe opacity",
+        "expected_urgency": "RED"
+    },
+    {
+        "id": "case_2",
+        "age": 35,
+        "sex": "Female",
+        "symptoms": "cough, mild fever, fatigue",
+        "duration": "5 days",
+        "medical_history": "None",
+        "vitals": {"temperature": 37.8, "spo2": 95, "heart_rate": 85},
+        "xray": "mild abnormality",
+        "expected_urgency": "YELLOW"
+    },
+    {
+        "id": "case_3",
+        "age": 24,
+        "sex": "Male",
+        "symptoms": "sore throat, mild cough",
+        "duration": "2 days",
+        "medical_history": "Asthma",
+        "vitals": {"temperature": 37.1, "spo2": 98, "heart_rate": 75},
+        "xray": "likely normal",
+        "expected_urgency": "GREEN"
+    }
+]\n
